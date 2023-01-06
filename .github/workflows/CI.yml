@@ -31,4 +31,4 @@ jobs:
       uses: EnricoMi/publish-unit-test-result-action@v2
       if: always()
       with:
-        nunit_files: "test-results/nunit/**/*.xml"
+        nunit_files: "test-results/**/*.xml"
