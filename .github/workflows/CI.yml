@@ -25,10 +25,11 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal --work:"test-results/test-result.xml"
+      run: dotnet test --no-build --verbosity normal
     
     - name: Publish Test Results
       uses: EnricoMi/publish-unit-test-result-action@v2
       if: always()
       with:
-        nunit_files: "test-results/*.xml"
+        nunit_files: "test-results/**/*.xml"
+        trx_files: "/test-results/*.trx"
