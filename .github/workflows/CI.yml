@@ -31,4 +31,4 @@ jobs:
       uses: EnricoMi/publish-unit-test-result-action@v2
       if: always()
       with:
-        nunit_files: "**/Debug/net6.0/test-result/RestSharpNUnitTest.xml"
+        nunit_files: "**/Debug/net6.0/test-result/*.xml"
