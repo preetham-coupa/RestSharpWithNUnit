@@ -12,7 +12,7 @@ public class RestSharpTest
         RestClient restClient = new RestClient();
         RestRequest restRequest= new RestRequest(getUrl);
         var restResponse = restClient.Get(restRequest);
-        Assert.AreEqual(true, restResponse.IsSuccessful);
+        Assert.That(restResponse.IsSuccessful, Is.EqualTo(true));
     }
 
     [Test]
@@ -21,7 +21,7 @@ public class RestSharpTest
         RestClient restClient = new RestClient();
         RestRequest restRequest = new RestRequest(getUrl+"aa");
         var restResponse = restClient.Get(restRequest);
-        var desired = "NotFound ";
-        Assert.AreEqual(restResponse.StatusCode.ToString(), desired);
+        var desired = "NotFound";
+        Assert.That(restResponse.StatusCode.ToString(), Is.EqualTo(desired));
     }
 }
