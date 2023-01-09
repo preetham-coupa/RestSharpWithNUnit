@@ -27,11 +27,14 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal -- NUnit.TestOutputXml=test-result
     
-    - name: Current Working Directory
+    - name: PWD
       run: ls
 
     - name: Change Directory
       run: cd RestSharpNUnitTest/bin/Debug/net6.0/test-result
+
+    - name: PWD
+      run: ls
 
     - name: Publish Test Results
       uses: EnricoMi/publish-unit-test-result-action@v2
