@@ -6,7 +6,7 @@ public class RestSharpTest
 {
     private string getUrl = "https://api.publicapis.org/entries";
 
-   [Test]
+    [Test]
     public void TestingConnection()
     {
         RestClient restClient = new RestClient();
@@ -16,12 +16,22 @@ public class RestSharpTest
     }
 
     [Test]
-    public void TestingResponse() 
+    public void TestingResponseFail() 
     {
         RestClient restClient = new RestClient();
         RestRequest restRequest = new RestRequest(getUrl+"aa");
         var restResponse = restClient.Get(restRequest);
         var desired = "NotFound";
         Assert.That(restResponse.StatusCode.ToString(), Is.EqualTo(desired));
+    }
+
+    [Test]
+    public void TestingResponseSuccess() 
+    {
+        RestClient restClient = new RestClient();
+        RestRequest restRequest = new RestRequest(getUrl);
+        var restResponse = restClient.Get(restRequest);
+        var desired = "OK";
+        Assert.AreEqual(restResponse.StatusCode.ToString(), desired);
     }
 }
