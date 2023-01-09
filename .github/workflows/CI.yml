@@ -32,5 +32,5 @@ jobs:
       if: always()
       with:
         # nunit_files: "test-results/**/*.xml"
-        nunit_files: "bin/Debug/*/test-result/*.xml"
+        nunit_files: "/bin/Debug/*/test-result/*.xml"
         trx_files: "/test-results/*.trx"
