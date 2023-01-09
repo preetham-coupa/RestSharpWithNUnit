@@ -31,7 +31,8 @@ jobs:
       run: ls
 
     - name: Change Directory
-      run: cd RestSharpNUnitTest/bin/Debug/net6.0/test-result
+      run: cd RestSharpNUnitTest/bin/Debug/net6.0/test-result |
+        ls
 
     - name: PWD
       run: ls
