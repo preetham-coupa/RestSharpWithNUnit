@@ -25,7 +25,7 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal --NUnit.TestOutputXml=test-result
+      run: dotnet test --no-build --verbosity normal -- NUnit.TestOutputXml=test-result
     
     - name: Current Working Directory
       run: ls 
