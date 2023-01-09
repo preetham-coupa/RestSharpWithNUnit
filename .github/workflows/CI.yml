@@ -30,7 +30,7 @@ jobs:
     - name: Present Working Directory
       run: ls 
     - name: move path
-      run: cd RestSharpNUnitTest/bin/Debug/net6.0/test-result
+      # run: cd RestSharpNUnitTest/bin/Debug/net6.0/test-result
     - name: Present Working Directory
     - name: Publish Test Results
       uses: EnricoMi/publish-unit-test-result-action@v2
