@@ -28,9 +28,13 @@ jobs:
       run: dotnet test --no-build --verbosity normal -- NUnit.TestOutputXml=test-result
     
     - name: Current Working Directory
-      run: ls 
+      run: ls
+
+    - name: Change Directory
+      run: cd RestSharpNUnitTest/bin/Debug/net6.0/test-result
+
     - name: Publish Test Results
       uses: EnricoMi/publish-unit-test-result-action@v2
       if: always()
       with:
-        nunit_files: "/RestSharpNUnitTest/bin/Debug/net6.0/test-result/*.xml"
+        nunit_files: "*.xml"
