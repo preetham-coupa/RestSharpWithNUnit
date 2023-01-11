@@ -41,11 +41,11 @@ jobs:
       with:
         nunit_files: "**/Debug/*/test-result/*.xml"
 
-    - name: Generate NUnit GH Summary comment 
-      uses: sierpinskid/unity-nunit-github-comment@v1
-      if: always()
-      with:
-        inputXmlPath: GitHubActionTest/**/Debug/*/test-result-another/*.xml
-        # outputHtmlPath: artifacts/gh_comment.txt
+    - name: Generate HTML test report
+  uses: rempelj/nunit-html-action@v1.0.1
+  if: always()
+  with:
+    inputXmlPath: GitHubActionTest/**/Debug/*/test-result-another/*.xml
+    outputHtmlPath: GitHubActionTest/**/Debug/*/test-result-another/*.html
           
           #  "GitHubActionTest/**/Debug/*/test-result-another/*.xml"
