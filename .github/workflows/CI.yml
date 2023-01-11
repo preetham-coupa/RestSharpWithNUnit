@@ -32,7 +32,7 @@ jobs:
     - name: Check out my other private repo
       uses: actions/checkout@v2
       with:
-        repository: preetham-coupa/RestSharpWithNUnit
+        repository: preetham-coupa/GitHubActionTest
         ref: main
 
     - name: Run Test on Cloned Repo
