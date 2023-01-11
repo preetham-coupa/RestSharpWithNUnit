@@ -16,6 +16,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - namw: Cloning another repo
+      run: git submodule add $git@github.com:preetham-coupa/GitHubActionTest.git “$SubmoduleFolder”
+    - name: Show all the folders
+      run: ls
+    
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
