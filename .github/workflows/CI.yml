@@ -34,9 +34,10 @@ jobs:
       with:
         repository: preetham-coupa/GitHubActionTest
         ref: main
-
+    - name: Print Path
+      run: ls;
     - name: Run Test on Cloned Repo
-      run: cd GitHubActionTest; dotnet restore; dotnet build --no-restore; dotnet test --no-build --verbosity normal -- NUnit.TestOutputXml=test-result-another;
+      run: dotnet restore; dotnet build --no-restore; dotnet test --no-build --verbosity normal -- NUnit.TestOutputXml=test-result-another;
 
     - name: Publish Test Results of Unit Test
       uses: EnricoMi/publish-unit-test-result-action@v2
