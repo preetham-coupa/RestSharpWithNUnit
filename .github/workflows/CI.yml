@@ -28,7 +28,7 @@ jobs:
       run: dotnet test --no-build --verbosity normal -- NUnit.TestOutputXml=test-result
 
     - name: Cloning another repo
-      run: git config --global user.email "preetham.p-m@coupa.com"; git config --global user.name "preetham-coupa"; git clone https://github.com/preetham-coupa/GitHubActionTest.git
+      run: git clone https://github.com/preetham-coupa/GitHubActionTest.git
     - name: Run Test on Cloned Repo
       run: cd GitHubActionTest; dotnet restore; dotnet build --no-restore; dotnet test --no-build --verbosity normal -- NUnit.TestOutputXml=test-result-another;
     
@@ -47,6 +47,6 @@ jobs:
       uses: rempelj/nunit-html-action@v1.0.1
       if: always()
       with:
-        inputXmlPath: GitHubActionTest/GitHubActionTest/bin/Debug/net6.0/test-result-another/GitHubActionTest.xml
+        inputXmlPath: GitHubActionTest/NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/GitHubActionTest.xml
         outputHtmlPath: GitHubActionTest/**/Debug/*/test-result-another/*.html
           #  "GitHubActionTest/**/Debug/*/test-result-another/*.xml"
