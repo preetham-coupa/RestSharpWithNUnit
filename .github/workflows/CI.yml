@@ -45,7 +45,6 @@ jobs:
       uses: rempelj/nunit-html-action@v1.0.1
       if: always()
       with:
-        inputXmlPath: GitHubActionTest/**/Debug/*/test-result-another/*.xml
+        inputXmlPath: GitHubActionTest/GitHubActionTest/bin/Debug/net6.0/test-result-another/GitHubActionTest.xml
         outputHtmlPath: GitHubActionTest/**/Debug/*/test-result-another/*.html
-          
           #  "GitHubActionTest/**/Debug/*/test-result-another/*.xml"
