@@ -41,6 +41,8 @@ jobs:
       with:
         nunit_files: "**/Debug/*/test-result/*.xml"
 
+    - name: Print Path
+      run: ls
     - name: Generate HTML test report
       uses: rempelj/nunit-html-action@v1.0.1
       if: always()
