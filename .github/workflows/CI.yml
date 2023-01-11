@@ -39,7 +39,7 @@ jobs:
         nunit_files: "**/Debug/*/test-result/*.xml"
 
     - name: Print Path
-      run: ls; cd GitHubActionTest/NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/
+      run: ls; cd GitHubActionTest/NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another; ls;
     - name: Generate HTML test report
       uses: rempelj/nunit-html-action@v1.0.1
       if: always()
