@@ -32,9 +32,6 @@ jobs:
     - name: Run Test on Cloned Repo
       run: cd GitHubActionTest; dotnet restore; dotnet build --no-restore; dotnet test --no-build --verbosity normal -- NUnit.TestOutputXml=test-result-another;
     
-    - name: Show all the folders
-      run: ls
-
     - name: Publish Test Results of Unit Test
       uses: EnricoMi/publish-unit-test-result-action@v2
       if: always()
@@ -42,11 +39,11 @@ jobs:
         nunit_files: "**/Debug/*/test-result/*.xml"
 
     - name: Print Path
-      run: ls
+      run: ls; cd GitHubActionTest/NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/
     - name: Generate HTML test report
       uses: rempelj/nunit-html-action@v1.0.1
       if: always()
       with:
-        inputXmlPath: GitHubActionTest/NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/GitHubActionTest.xml
+        inputXmlPath: GitHubActionTest/NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/NUnitTestProjectForGitHubActionTest.xml
         outputHtmlPath: GitHubActionTest/**/Debug/*/test-result-another/*.html
           #  "GitHubActionTest/**/Debug/*/test-result-another/*.xml"
