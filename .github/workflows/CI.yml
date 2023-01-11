@@ -29,14 +29,15 @@ jobs:
 
     - name: Cloning another repo
       run: git config --global user.email "preetham.p-m@coupa.com"; git config --global user.name "preetham-coupa"; git clone https://github.com/preetham-coupa/GitHubActionTest.git
-    - name: Show all the folders
-      run: ls
     - name: Run Test on Cloned Repo
       run: cd GitHubActionTest; dotnet restore; dotnet build --no-restore; dotnet test --no-build --verbosity normal -- NUnit.TestOutputXml=test-result-another;
+    
+    - name: Show all the folders
+      run: ls
 
     - name: Publish Test Results
       uses: EnricoMi/publish-unit-test-result-action@v2
       if: always()
       with:
         nunit_files: "**/Debug/*/test-result/*.xml"
-        nunit_files_2: "**/Debug/*/test-result-another/*.xml"
+        nunit_files_2: "GitHubActionTest/**/Debug/*/test-result-another/*.xml"
