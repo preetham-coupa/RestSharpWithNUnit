@@ -39,5 +39,5 @@ jobs:
       uses: EnricoMi/publish-unit-test-result-action@v2
       if: always()
       with:
-        nunit_files: "**/Debug/*/test-result/*.xml"
-        nunit_files_2: "GitHubActionTest/**/Debug/*/test-result-another/*.xml"
+        # nunit_files: "**/Debug/*/test-result/*.xml"
+        nunit_files: "GitHubActionTest/**/Debug/*/test-result-another/*.xml"
