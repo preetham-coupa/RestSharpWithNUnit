@@ -41,8 +41,11 @@ jobs:
       with:
         nunit_files: "**/Debug/*/test-result/*.xml"
 
-    - name: Publish Test Results of Automation
-      uses: EnricoMi/publish-unit-test-result-action@v2
+    - name: Generate NUnit GH Summary comment 
+      uses: sierpinskid/unity-nunit-github-comment@v1
       if: always()
       with:
-        nunit_files: "GitHubActionTest/**/Debug/*/test-result-another/*.xml"
+        inputXmlPath: GitHubActionTest/**/Debug/*/test-result-another/*.xml
+        # outputHtmlPath: artifacts/gh_comment.txt
+          
+          #  "GitHubActionTest/**/Debug/*/test-result-another/*.xml"
