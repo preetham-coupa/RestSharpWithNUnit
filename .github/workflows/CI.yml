@@ -17,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Cloning another repo
-      run: git config --global user.email "preetham.p-m@coupa.com"; git config --global user.name "preetham-coupa"; git submodule add $git@github.com:preetham-coupa/GitHubActionTest.git “$SubmoduleFolder”
+      run: git config --global user.email "preetham.p-m@coupa.com"; git config --global user.name "preetham-coupa"; git submodule add $git@github.com:preetham-coupa/GitHubActionTest.git “SubmoduleFolder”
     - name: Show all the folders
       run: ls
     
