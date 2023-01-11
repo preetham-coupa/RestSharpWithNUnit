@@ -35,9 +35,14 @@ jobs:
     - name: Show all the folders
       run: ls
 
-    - name: Publish Test Results
+    - name: Publish Test Results of Unit Test
       uses: EnricoMi/publish-unit-test-result-action@v2
       if: always()
       with:
-        xunit_files: "**/Debug/*/test-result/*.xml"
+        nunit_files: "**/Debug/*/test-result/*.xml"
+
+    - name: Publish Test Results of Automation
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
+      with:
         nunit_files: "GitHubActionTest/**/Debug/*/test-result-another/*.xml"
