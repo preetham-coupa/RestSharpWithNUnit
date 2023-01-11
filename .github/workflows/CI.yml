@@ -42,10 +42,10 @@ jobs:
         nunit_files: "**/Debug/*/test-result/*.xml"
 
     - name: Generate HTML test report
-  uses: rempelj/nunit-html-action@v1.0.1
-  if: always()
-  with:
-    inputXmlPath: GitHubActionTest/**/Debug/*/test-result-another/*.xml
-    outputHtmlPath: GitHubActionTest/**/Debug/*/test-result-another/*.html
+      uses: rempelj/nunit-html-action@v1.0.1
+      if: always()
+      with:
+        inputXmlPath: GitHubActionTest/**/Debug/*/test-result-another/*.xml
+        outputHtmlPath: GitHubActionTest/**/Debug/*/test-result-another/*.html
           
           #  "GitHubActionTest/**/Debug/*/test-result-another/*.xml"
