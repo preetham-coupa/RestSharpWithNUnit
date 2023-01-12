@@ -18,12 +18,12 @@ jobs:
     - name: Main repo
       uses: actions/checkout@v3
       
-    - name: Checkout Automation
-      uses: actions/checkout@v3
-      with:
-        repository: coupa/foundation-automation
-        token: ${{ secrets.FOUNDATION_DOTNET }}
-        ref: main
+    # - name: Checkout Automation
+    #   uses: actions/checkout@v3
+    #   with:
+    #     repository: coupa/foundation-automation
+    #     token: ${{ secrets.FOUNDATION_DOTNET }}
+    #     ref: main
         
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
@@ -50,17 +50,3 @@ jobs:
 
     - name: Run Test on 2nd Repo
       run: dotnet restore; dotnet build --no-restore; dotnet test --no-build --verbosity normal -- NUnit.TestOutputXml=test-result-another;
-
-    - name: Generate HTML test report
-      uses: rempelj/nunit-html-action@v1.0.1
-      if: always()
-      with:
-        inputXmlPath: NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/NUnitTestProjectForGitHubActionTest.xml
-        outputHtmlPath: NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/NUnitTestProjectForGitHubActionTest.html
-
-    - uses: dorny/test-reporter@v1
-      with:
-        artifact: test-results
-        name: NUnit Tests                  
-        path: 'NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/NUnitTestProjectForGitHubActionTest.xml'
-        reporter: jest-junit 
