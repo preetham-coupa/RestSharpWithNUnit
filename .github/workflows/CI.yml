@@ -18,12 +18,12 @@ jobs:
     - name: Main repo
       uses: actions/checkout@v3
       
-    - name: Clone another
-      uses: actions/checkout@v3
-      with:
-        repository: coupa/foundation-automation
-        token: ${{ secrets.FOUNDATION_DOTNET }}
-        ref: main
+    # - name: Clone another
+    #   uses: actions/checkout@v3
+    #   with:
+    #     repository: coupa/foundation-automation
+    #     token: ${{ secrets.FOUNDATION_DOTNET }}
+    #     ref: main
         
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
@@ -42,31 +42,25 @@ jobs:
       with:
         nunit_files: "**/Debug/*/test-result/*.xml"
 
-    # - name: Cloning another repo
-    #   run: git clone https://github.com/preetham-coupa/GitHubActionTest.git
-    - name: Check out my other private repo
+    - name: 2nd Repo
       uses: actions/checkout@v2
       with:
         repository: preetham-coupa/GitHubActionTest
         ref: main
-    - name: Print Path
-      run: ls;
-    - name: Run Test on Cloned Repo
+
+    - name: Run Test on 2nd Repo
       run: dotnet restore; dotnet build --no-restore; dotnet test --no-build --verbosity normal -- NUnit.TestOutputXml=test-result-another;
 
-    - name: Print Path
-      run: ls; cd NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another; ls;
     - name: Generate HTML test report
       uses: rempelj/nunit-html-action@v1.0.1
       if: always()
       with:
         inputXmlPath: NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/NUnitTestProjectForGitHubActionTest.xml
         outputHtmlPath: NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/NUnitTestProjectForGitHubActionTest.html
-          #  "GitHubActionTest/**/Debug/*/test-result-another/*.xml"
 
     - uses: dorny/test-reporter@v1
       with:
-        artifact: test-results            # artifact name
-        name: NUnit Tests                  # Name of the check run which will be created
+        artifact: test-results
+        name: NUnit Tests                  
         path: 'NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/NUnitTestProjectForGitHubActionTest.xml'
         reporter: jest-junit 
