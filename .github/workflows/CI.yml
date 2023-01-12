@@ -23,7 +23,7 @@ jobs:
       with:
         repository: coupa/foundation-automation
         token: ${{ secrets.FOUNDATION_DOTNET }}
-        path: main
+        ref: main
         
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
