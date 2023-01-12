@@ -42,7 +42,6 @@ jobs:
       with:
         nunit_files: "**/Debug/*/test-result/*.xml"
 
-
     # - name: Cloning another repo
     #   run: git clone https://github.com/preetham-coupa/GitHubActionTest.git
     - name: Check out my other private repo
@@ -64,3 +63,9 @@ jobs:
         inputXmlPath: NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/NUnitTestProjectForGitHubActionTest.xml
         outputHtmlPath: NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/NUnitTestProjectForGitHubActionTest.html
           #  "GitHubActionTest/**/Debug/*/test-result-another/*.xml"
+
+    - uses: dorny/test-reporter@v1
+      with:
+        artifact: test-results            # artifact name
+        name: NUnit Tests                  # Name of the check run which will be created
+        path: 'NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/NUnitTestProjectForGitHubActionTest.xml'
