@@ -18,12 +18,12 @@ jobs:
     - name: Main repo
       uses: actions/checkout@v3
       
-    # - name: Clone another
-    #   uses: actions/checkout@v3
-    #   with:
-    #     repository: coupa/foundation-automation
-    #     token: ${{ secrets.FOUNDATION_DOTNET }}
-    #     ref: main
+    - name: Checkout Automation
+      uses: actions/checkout@v3
+      with:
+        repository: coupa/foundation-automation
+        token: ${{ secrets.FOUNDATION_DOTNET }}
+        ref: main
         
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
