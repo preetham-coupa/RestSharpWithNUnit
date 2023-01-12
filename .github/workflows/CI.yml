@@ -69,3 +69,4 @@ jobs:
         artifact: test-results            # artifact name
         name: NUnit Tests                  # Name of the check run which will be created
         path: 'NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/NUnitTestProjectForGitHubActionTest.xml'
+        reporter: dotnet-nunit 
