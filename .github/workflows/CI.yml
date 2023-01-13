@@ -57,7 +57,8 @@ jobs:
       with:
         path: "**/Debug/*/test-result/*.xml"
         access-token: ${{ secrets.FOUNDATION_DOTNET }}
-
+    - name: Print path
+      run: ls
     - name: Publish Test Results of Automation Test
       uses: EnricoMi/publish-unit-test-result-action@v2
       if: always()
