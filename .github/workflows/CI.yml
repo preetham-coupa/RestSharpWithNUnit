@@ -50,16 +50,4 @@ jobs:
 
     - name: Run Test on 2nd Repo
       run: dotnet restore; dotnet build --no-restore; dotnet test --no-build --verbosity normal -- NUnit.TestOutputXml=test-result-another; dotnet test --logger trx;
-    
-    - name: Print path
-      run: ls; cd NUnitTestProjectForGitHubActionTest; ls;
-    # Exact path of test result file: NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/*.xml
-    # path: 'NUnitTestProjectForGitHubActionTest/TestResults/*.trx'              
-
-    - name: use this action, test solution dir
-      uses: zyborg/dotnet-tests-report@v1
-      with:
-        project_path: .
-        report_name: my_project_tests
-        report_title: My Project Tests
-        github_token: ${{ secrets.POC_TOKEN }}
+      
