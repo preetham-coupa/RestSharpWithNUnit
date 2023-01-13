@@ -66,5 +66,6 @@ jobs:
       with:
         github-token: ${{ secrets.POC_TOKEN }}
         comment-title: 'Unit Test Results'
-        results-path: NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/
+        results-path: NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/NUnitTestProjectForGitHubActionTest.xml
+        coverage-path: NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/NUnitTestProjectForGitHubActionTest.xml
       
