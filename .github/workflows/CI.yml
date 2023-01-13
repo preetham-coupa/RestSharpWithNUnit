@@ -22,7 +22,7 @@ jobs:
     #   uses: actions/checkout@v3
     #   with:
     #     repository: coupa/foundation-automation
-    #     token: ${{ secrets.FOUNDATION_DOTNET }}
+    #     token: ${{ secrets.POC_TOKEN }}
     #     ref: main
         
     - name: Setup .NET
