@@ -62,4 +62,4 @@ jobs:
         project_path: .
         report_name: my_project_tests
         report_title: My Project Tests
-        github_token: ${{ secrets.FOUNDATION_DOTNET }}
+        github_token: ${{ secrets.POC_TOKEN }}
