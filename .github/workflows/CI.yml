@@ -15,7 +15,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Main repo
+      uses: actions/checkout@v3
+      
+    # - name: Checkout Automation
+    #   uses: actions/checkout@v3
+    #   with:
+    #     repository: coupa/foundation-automation
+    #     token: ${{ secrets.FOUNDATION_DOTNET }}
+    #     ref: main
+        
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
@@ -26,9 +35,19 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal -- NUnit.TestOutputXml=test-result
-    
-    - name: Publish Test Results
+
+    - name: Publish Test Results of Unit Test
       uses: EnricoMi/publish-unit-test-result-action@v2
       if: always()
       with:
         nunit_files: "**/Debug/*/test-result/*.xml"
+
+    - name: 2nd Repo
+      uses: actions/checkout@v2
+      with:
+        repository: preetham-coupa/GitHubActionTest
+        ref: main
+
+    - name: Run Test on 2nd Repo
+      run: dotnet restore; dotnet build --no-restore; dotnet test --no-build --verbosity normal -- NUnit.TestOutputXml=test-result-another; dotnet test --logger trx;
+      
