@@ -61,8 +61,8 @@ jobs:
       run: ls; cd NUnitTestProjectForGitHubActionTest; ls;
     # Exact path of test result file: NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/*.xml
     # path: 'NUnitTestProjectForGitHubActionTest/TestResults/*.trx'              
-    - name: Post result 
-      uses: bibipkins/dotnet-test-reporter@v1
+    - name: Dotnet Test Reporter
+      uses: bibipkins/dotnet-test-reporter@v1.2.0
       with:
         github-token: ${{ secrets.POC_TOKEN }}
         comment-title: 'Unit Test Results'
