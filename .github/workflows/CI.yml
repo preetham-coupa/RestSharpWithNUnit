@@ -49,19 +49,28 @@ jobs:
         ref: main
 
     - name: Run Test on 2nd Repo
-      run: dotnet restore; dotnet build --no-restore; dotnet test --no-build --verbosity normal -- NUnit.TestOutputXml=test-result-another;
+      run: dotnet restore; dotnet build --no-restore; dotnet test --no-build --verbosity normal -- NUnit.TestOutputXml=test-result-another; dotnet test --logger trx;
     
     - name: Print path
       run: ls; cd NUnitTestProjectForGitHubActionTest; ls;
 
-    - name: Post Result
-      uses: MirageNet/nunit-reporter@v1.1.0
-      if: always()
+    - uses: dorny/test-reporter@v1
       with:
-        path: "***/Debug/*/test-result-another/*.xml"
-        access-token: ${{ secrets.FOUNDATION_DOTNET }}
+        artifact: test-results            
+        name: dotnet-trx                  
+        path: 'NUnitTestProjectForGitHubActionTest/*.trx'              
+        reporter: dotnet-trx
+
+    # - name: Post Result
+    #   uses: MirageNet/nunit-reporter@v1.1.0
+    #   if: always()
+    #   with:
+    #     path: "NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/NUnitTestProjectForGitHubActionTest.xml"
+    #     access-token: ${{ secrets.FOUNDATION_DOTNET }}
+    # Exact path of test result file: NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/*.xml
+    
     - name: Publish Test Results of Automation Test
       uses: EnricoMi/publish-unit-test-result-action@v2
       if: always()
       with:
-        nunit_files: "NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/*.xml"
+        nunit_files: ""
