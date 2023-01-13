@@ -52,7 +52,7 @@ jobs:
       run: dotnet restore; dotnet build --no-restore; dotnet test --no-build --verbosity normal -- NUnit.TestOutputXml=test-result-another;
     
     - name: Print path
-      run: ls
+      run: ls; cd NUnitTestProjectForGitHubActionTest; ls;
 
     - name: Post Result
       uses: MirageNet/nunit-reporter@v1.1.0
@@ -64,4 +64,4 @@ jobs:
       uses: EnricoMi/publish-unit-test-result-action@v2
       if: always()
       with:
-        nunit_files: "NUnitTestProjectForGitHubActionTest/**/Debug/*/test-result/*.xml"
+        nunit_files: "NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result/*.xml"
