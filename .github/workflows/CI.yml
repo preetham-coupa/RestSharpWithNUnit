@@ -56,4 +56,4 @@ jobs:
       if: always()
       with:
         path: "**/Debug/*/test-result/*.xml"
-        # access-token: ${{ secrets.GITHUB_TOKEN }}
+        access-token: ${{ secrets.FOUNDATION_DOTNET }}
