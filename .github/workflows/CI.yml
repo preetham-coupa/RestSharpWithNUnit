@@ -58,7 +58,7 @@ jobs:
       with:
         artifact: test-results            
         name: dotnet-trx                  
-        path: 'NUnitTestProjectForGitHubActionTest/*.trx'              
+        path: 'NUnitTestProjectForGitHubActionTest/TestResults/*.trx'              
         reporter: dotnet-trx
 
     # - name: Post Result
@@ -68,7 +68,7 @@ jobs:
     #     path: "NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/NUnitTestProjectForGitHubActionTest.xml"
     #     access-token: ${{ secrets.FOUNDATION_DOTNET }}
     # Exact path of test result file: NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/*.xml
-    
+
     - name: Publish Test Results of Automation Test
       uses: EnricoMi/publish-unit-test-result-action@v2
       if: always()
