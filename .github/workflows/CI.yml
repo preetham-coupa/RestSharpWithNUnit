@@ -48,6 +48,12 @@ jobs:
         repository: preetham-coupa/GitHubActionTest
         ref: main
 
-    - name: Run Test on 2nd Repo
-      run: dotnet restore; dotnet build --no-restore; dotnet test --no-build --verbosity normal -- NUnit.TestOutputXml=test-result-another; dotnet test --logger trx;
+    - name: Restore on 2nd Repo
+      run: dotnet restore
+
+    - name: Build on 2nd Repo 
+      run: dotnet build --no-restore; 
+      
+    - name: Generate xml and trx report
+      run: dotnet test --no-build --verbosity normal --logger trx -- NUnit.TestOutputXml=test-result-another; 
       
