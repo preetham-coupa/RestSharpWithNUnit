@@ -69,7 +69,7 @@ jobs:
     - name: Dotnet Test Reporter
       uses: bibipkins/dotnet-test-reporter@v1.2.0
       with:
-        github-token: ${{ secrets.POC_TOKEN }}
+        # github-token: ${{ secrets.POC_TOKEN }}
         comment-title: 'Automation Test Results'
         results-path: NUnitTestProjectForGitHubActionTest/TestResults/
 
