@@ -53,24 +53,13 @@ jobs:
     
     - name: Print path
       run: ls; cd NUnitTestProjectForGitHubActionTest; ls;
-
-    - uses: dorny/test-reporter@v1
-      with:
-        artifact: TestResults            
-        name: dotnet-trx                  
-        path: 'NUnitTestProjectForGitHubActionTest/TestResults/*.trx'              
-        reporter: dotnet-trx
-
-    # - name: Post Result
-    #   uses: MirageNet/nunit-reporter@v1.1.0
-    #   if: always()
-    #   with:
-    #     path: "NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/NUnitTestProjectForGitHubActionTest.xml"
-    #     access-token: ${{ secrets.FOUNDATION_DOTNET }}
     # Exact path of test result file: NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/*.xml
+    # path: 'NUnitTestProjectForGitHubActionTest/TestResults/*.trx'              
 
-    - name: Publish Test Results of Automation Test
-      uses: EnricoMi/publish-unit-test-result-action@v2
-      if: always()
+    - name: use this action, test solution dir
+      uses: zyborg/dotnet-tests-report@v1
       with:
-        trx_files: "NUnitTestProjectForGitHubActionTest/TestResults/*.trx"
+        project_path: .
+        report_name: my_project_tests
+        report_title: My Project Tests
+        github_token: ${{ secrets.FOUNDATION_DOTNET }}
