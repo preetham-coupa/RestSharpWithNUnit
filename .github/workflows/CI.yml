@@ -58,7 +58,7 @@ jobs:
       run: dotnet test --no-build --verbosity normal --logger trx -- NUnit.TestOutputXml=test-result-another; 
     
     - name: Print path
-      run: ls; cd NUnitTestProjectForGitHubActionTest; ls;
+      run: cd NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another; ls;
     # Exact path of test result file: NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/*.xml
     # path: 'NUnitTestProjectForGitHubActionTest/TestResults/*.trx'              
     - name: Dotnet Test Reporter
