@@ -50,4 +50,4 @@ _book
 /node_modules
 .vscode
 **/.idea/
-TestResult/
+TestResults/
