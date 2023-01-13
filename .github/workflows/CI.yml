@@ -71,6 +71,6 @@ jobs:
       with:
         github-token: ${{ secrets.POC_TOKEN }}
         comment-title: 'Automation Test Results'
-        results-path: "*/TestResults/"
+        results-path: ./TestResults/
 
       
