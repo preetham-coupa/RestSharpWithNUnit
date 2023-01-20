@@ -6,7 +6,7 @@ public class RestSharpTest
 {
     private string getUrl = "https://api.publicapis.org/entries";
 
-    [Test]
+    [Test, Category("UnitTest")]
     public void TestingConnection()
     {
         RestClient restClient = new RestClient();
@@ -15,7 +15,7 @@ public class RestSharpTest
         Assert.That(restResponse.IsSuccessful, Is.EqualTo(true));
     }
 
-    [Test]
+    [Test, Category("UnitTest")]
     public void TestingResponseFail() 
     {
         RestClient restClient = new RestClient();
