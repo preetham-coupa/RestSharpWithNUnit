@@ -12,6 +12,7 @@ on:
         required: false
         type: string
         default: ""
+
 permissions:
   checks: write
   contents: read
@@ -43,12 +44,12 @@ jobs:
       - name: Test
         run: dotnet test --filter --no-build --verbosity normal -- NUnit.TestOutputXml=test-result 
           
-        # - name: Publish Test Results of Unit Test
-        #   uses: EnricoMi/publish-unit-test-result-action@v2
-        #   if: always()
-        #   with:
-        #     check_name: "Unit Test Results"
-        #     nunit_files: "**/Debug/**/test-result/*.xml"
+      - name: Publish Test Results of Unit Test
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          check_name: "Unit Test Results"
+          nunit_files: "**/Debug/**/test-result/*.xml"
 
 
           
