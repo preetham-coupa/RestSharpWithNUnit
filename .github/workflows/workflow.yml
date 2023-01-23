@@ -1,0 +1,47 @@
+on:
+  workflow_call:
+    inputs:
+      pr_id:
+        description: PR Number
+        required: false
+        type: Number
+        default: 1
+      
+      url_of_instance:
+        description: URL of the instance aginst which the tests are run.
+        required: true
+        type: string
+        default: ""
+  
+  jobs:
+    automation_test: 
+      name: System
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+        
+        - name: Setup .NET
+          uses: actions/setup-dotnet@v3
+          with:
+            dotnet-version: 6.0.x
+            
+        - name: Restore dependencies
+          run: dotnet restore
+          
+        - name: Build
+          run: dotnet build --no-restore
+
+        - name: Test
+          run: dotnet test --filter --no-build --verbosity normal -- NUnit.TestOutputXml=test-result 
+          
+        # - name: Publish Test Results of Unit Test
+        #   uses: EnricoMi/publish-unit-test-result-action@v2
+        #   if: always()
+        #   with:
+        #     check_name: "Unit Test Results"
+        #     nunit_files: "**/Debug/**/test-result/*.xml"
+
+
+          
