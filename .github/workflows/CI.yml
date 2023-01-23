@@ -57,15 +57,18 @@ jobs:
     - name: Generate xml and trx report
       run: dotnet test --no-build --verbosity normal --logger trx -- NUnit.TestOutputXml=test-result-another; 
     
-    - name: Print path
-      run: cd NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another; ls;
+    # - name: Print path
+    #   run: cd NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another; ls;
+
     # Exact path of test result file: NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another/*.xml
-    # path: 'NUnitTestProjectForGitHubActionTest/TestResults/*.trx'              
-    - name: Dotnet Test Reporter
-      uses: bibipkins/dotnet-test-reporter@v1.2.0
-      with:
-        github-token: ${{ secrets.POC_TOKEN }}
-        comment-title: 'Unit Test Results'
-        results-path: NUnitTestProjectForGitHubActionTest/TestResults/
+    # path: 'NUnitTestProjectForGitHubActionTest/TestResults/*.trx'   
+
+    # Requires PAT and Can traverse one folder
+    # - name: Dotnet Test Reporter
+    #   uses: bibipkins/dotnet-test-reporter@v1.2.0
+    #   with:
+    #     # github-token: ${{ secrets.POC_TOKEN }}
+    #     comment-title: 'Automation Test Results'
+    #     results-path: NUnitTestProjectForGitHubActionTest/TestResults/
 
       
