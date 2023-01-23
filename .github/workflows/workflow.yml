@@ -4,12 +4,12 @@ on:
       pr_id:
         description: PR Number
         required: false
-        type: Number
-        default: 1
+        type: string
+        default: ""
       
       url_of_instance:
         description: URL of the instance aginst which the tests are run.
-        required: true
+        required: false
         type: string
         default: ""
   
