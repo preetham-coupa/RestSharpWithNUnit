@@ -9,7 +9,7 @@ on:
       
       url_of_instance:
         description: URL of the instance aginst which the tests are run.
-        required: false
+        required: true
         type: string
         default: ""
 
@@ -37,7 +37,10 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 6.0.x
-          
+
+      - name: Print the parameter
+        run: echo ${{ inputs.url_of_instance }}
+
       - name: Restore dependencies
         run: dotnet restore
         
