@@ -42,20 +42,20 @@ jobs:
       with:
         nunit_files: "**/Debug/*/test-result/*.xml"
 
-    - name: 2nd Repo
-      uses: actions/checkout@v2
-      with:
-        repository: preetham-coupa/GitHubActionTest
-        ref: main
+    # - name: 2nd Repo
+    #   uses: actions/checkout@v2
+    #   with:
+    #     repository: preetham-coupa/GitHubActionTest
+    #     ref: main
 
-    - name: Restore on 2nd Repo
-      run: dotnet restore
+    # - name: Restore on 2nd Repo
+    #   run: dotnet restore
 
-    - name: Build on 2nd Repo 
-      run: dotnet build --no-restore; 
+    # - name: Build on 2nd Repo 
+    #   run: dotnet build --no-restore; 
       
-    - name: Generate xml and trx report
-      run: dotnet test --no-build --verbosity normal --logger trx -- NUnit.TestOutputXml=test-result-another; 
+    # - name: Generate xml and trx report
+    #   run: dotnet test --no-build --verbosity normal --logger trx -- NUnit.TestOutputXml=test-result-another; 
     
     # - name: Print path
     #   run: cd NUnitTestProjectForGitHubActionTest/bin/Debug/net6.0/test-result-another; ls;
