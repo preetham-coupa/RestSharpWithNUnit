@@ -10,6 +10,10 @@ public class RestSharpTest
     public void TestingConnection()
     {
         RestClient restClient = new RestClient();
+        if (getUrl == "URL_TO_BE_REPLACED")
+        {
+            getUrl = "https://api.publicapis.org/entries";
+        }
         RestRequest restRequest = new RestRequest(getUrl);
         var restResponse = restClient.Get(restRequest);
         Assert.That(restResponse.IsSuccessful, Is.EqualTo(true));
@@ -19,6 +23,10 @@ public class RestSharpTest
     public void TestingResponseFail()
     {
         RestClient restClient = new RestClient();
+        if (getUrl == "URL_TO_BE_REPLACED")
+        {
+            getUrl = "https://api.publicapis.org/entries";
+        }
         RestRequest restRequest = new RestRequest(getUrl + "aa");
         var restResponse = restClient.Get(restRequest);
         var desired = "NotFound";
@@ -29,6 +37,10 @@ public class RestSharpTest
     public void TestingResponseSuccess()
     {
         RestClient restClient = new RestClient();
+        if (getUrl == "URL_TO_BE_REPLACED")
+        {
+            getUrl = "https://api.publicapis.org/entries";
+        }
         RestRequest restRequest = new RestRequest(getUrl);
         var restResponse = restClient.Get(restRequest);
         var desired = "OK";
