@@ -42,7 +42,7 @@ jobs:
         run: echo ${{ inputs.url_of_instance }}
 
       - name:
-          run: sed
+        run: sed
           
       - name: Restore dependencies
         run: dotnet restore
