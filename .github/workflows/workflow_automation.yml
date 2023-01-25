@@ -23,7 +23,7 @@ permissions:
 
 jobs:
   automation_test: 
-    name: System
+    name: Automation Workflow
     runs-on: ubuntu-latest
 
     steps:
@@ -41,12 +41,12 @@ jobs:
       - name: Print the parameter
         run: echo ${{ inputs.url_of_instance }}
 
-      - name:
-        run: |
-          ls
-          cd RestSharpNUnitTest
-          ls
-          sed -i 's/"URL_TO_BE_REPLACED"/"${{inputs.url_of_instance}}"/g' RestSharpTest.cs
+      # - name:
+      #   run: |
+      #     ls
+      #     cd RestSharpNUnitTest
+      #     ls
+      #     sed -i 's/"URL_TO_BE_REPLACED"/"${{inputs.url_of_instance}}"/g' RestSharpTest.cs
 
           
       - name: Restore dependencies
@@ -62,7 +62,7 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
-          check_name: "2nd repo Test Results"
+          check_name: "Automation Test Results"
           nunit_files: "**/Debug/**/test-result/*.xml"
 
 
