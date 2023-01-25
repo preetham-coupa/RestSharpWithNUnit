@@ -4,29 +4,29 @@ namespace RestSharpNUnitTest;
 
 public class RestSharpTest
 {
-    private string getUrl = "https://api.publicapis.org/entries";
+    private string getUrl = "URL_TO_BE_REPLACED";
 
     [Test, Category("UnitTest")]
     public void TestingConnection()
     {
         RestClient restClient = new RestClient();
-        RestRequest restRequest= new RestRequest(getUrl);
+        RestRequest restRequest = new RestRequest(getUrl);
         var restResponse = restClient.Get(restRequest);
         Assert.That(restResponse.IsSuccessful, Is.EqualTo(true));
     }
 
     [Test, Category("UnitTest")]
-    public void TestingResponseFail() 
+    public void TestingResponseFail()
     {
         RestClient restClient = new RestClient();
-        RestRequest restRequest = new RestRequest(getUrl+"aa");
+        RestRequest restRequest = new RestRequest(getUrl + "aa");
         var restResponse = restClient.Get(restRequest);
         var desired = "NotFound";
         Assert.That(restResponse.StatusCode.ToString(), Is.EqualTo(desired));
     }
 
     [Test]
-    public void TestingResponseSuccess() 
+    public void TestingResponseSuccess()
     {
         RestClient restClient = new RestClient();
         RestRequest restRequest = new RestRequest(getUrl);
