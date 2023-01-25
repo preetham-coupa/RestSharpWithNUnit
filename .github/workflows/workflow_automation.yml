@@ -25,6 +25,8 @@ jobs:
   automation_test: 
     name: Automation Workflow
     runs-on: ubuntu-latest
+    env:
+      URL: ${{ inputs.url_of_instance }}
 
     steps:
       - name: Checkout
@@ -39,7 +41,7 @@ jobs:
           dotnet-version: 6.0.x
 
       - name: Print the parameter
-        run: echo ${{ inputs.url_of_instance }}
+        run: echo $URL
 
       # - name:
       #   run: |
