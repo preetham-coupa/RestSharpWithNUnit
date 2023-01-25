@@ -46,7 +46,7 @@ jobs:
           ls
           cd RestSharpNUnitTest
           ls
-          sed -i 's/URL_TO_BE_REPLACED/${{inputs.url_of_instance}}/g' RestSharpTest.cs
+          sed -i 's/"URL_TO_BE_REPLACED"/"${{inputs.url_of_instance}}"/g' RestSharpTest.cs
 
           
       - name: Restore dependencies
