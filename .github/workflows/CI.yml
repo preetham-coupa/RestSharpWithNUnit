@@ -24,7 +24,9 @@ jobs:
     #     repository: coupa/foundation-automation
     #     token: ${{ secrets.POC_TOKEN }}
     #     ref: main
-        
+    
+    - name: Print Current branch
+      run: echo ${ GITHUB.REF }   
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
